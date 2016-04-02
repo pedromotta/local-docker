@@ -30,7 +30,7 @@ var ApiNode = (function () {
 
   require('./lib/app-routes')(app);
 
-  server = app.listen(3000, function () {
+  server = app.listen(4000, function () {
     var host = server.address().address;
     var port = server.address().port;
 
