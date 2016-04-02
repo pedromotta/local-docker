@@ -1,0 +1,28 @@
+{
+  "name": "local-docker",
+  "version": "1.0.0",
+  "description": "API for deploy applications in docker containers",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "dockerode": "^2.2.10",
+    "express": "^4.13.3",
+    "morgan": "^1.6.1",
+    "winston": "^2.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index",
+    "lint": "eslint lib/** test/**; exit 0;"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pedromotta/local-docker.git"
+  },
+  "author": "Pedro Motta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pedromotta/local-docker/issues"
+  },
+  "homepage": "https://github.com/pedromotta/local-docker#readme"
+}
