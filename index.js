@@ -14,9 +14,20 @@ var ApiNode = (function () {
 
   process.title = appTitle;
 
-  process.on('exit', function () {
-    logger.warn('exit');
-  });
+  function shutdown() {
+    logger.warn('Server receive signal to shutdown.');
+    process.exit(0);
+  }
+
+  process.on('SIGTERM', shutdown)
+    .on('SIGINT', shutdown)
+    .on('SIGHUP', shutdown)
+    .on('uncaughtException', function (er) {
+      logger.error(er.message);
+    })
+    .on('exit', function (code) {
+      logger.info('Node process exit with code: %s', code);
+    });
 
   app.use(bodyParser.json());
 
@@ -30,7 +41,7 @@ var ApiNode = (function () {
 
   require('./lib/app-routes')(app);
 
-  server = app.listen(4000, function () {
+  server = app.listen(4444, function () {
     var host = server.address().address;
     var port = server.address().port;
 
