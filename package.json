@@ -6,14 +6,16 @@
   "dependencies": {
     "body-parser": "^1.14.1",
     "dockerode": "^2.2.10",
+    "ejs": "^2.4.1",
     "express": "^4.13.3",
+    "express-ejs-layouts": "^2.1.0",
     "morgan": "^1.6.1",
     "winston": "^2.1.1"
   },
   "devDependencies": {},
   "scripts": {
     "start": "node index",
-    "lint": "eslint lib/** test/**; exit 0;"
+    "lint": "eslint lib/** test/**"
   },
   "repository": {
     "type": "git",

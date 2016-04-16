@@ -1,0 +1,17 @@
+{
+  "name": "local-docker",
+  "description": "API for deploy applications in docker containers",
+  "main": "index.js",
+  "authors": [
+    "Pedro Motta"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/pedromotta/local-docker",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
