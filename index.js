@@ -3,7 +3,6 @@ var ROOT_PATH = process.cwd();
 var express = require('express');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
-var ejsLayouts = require('express-ejs-layouts');
 var logger = require('./lib/commons/logger');
 
 var pkg = require(ROOT_PATH + '/package.json');
@@ -40,11 +39,8 @@ var ApiNode = (function () {
     stream: logger.stream
   }));
 
-  app.set('view engine', 'ejs');
-  app.set('layout', 'partials/layout');
-  app.use(ejsLayouts);
-  app.set('views', './views');
-  app.use(express.static(__dirname + '/public'));
+  app.use(express.static(__dirname + '/app'));
+  app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 
   require('./lib/app-routes')(app);
 
