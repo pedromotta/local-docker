@@ -6,12 +6,13 @@
         <!-- Angular Material style sheet -->
         <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
     </head>
-    <body>
+    <body ng-app="localDockerApp">
         <div>
-            <%- body %>
+            <ng-view></ng-view>
         </div>
         <!-- Angular Material requires Angular.js Libraries -->
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-route.min.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
@@ -19,10 +20,14 @@
         <!-- Angular Material Library -->
         <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
 
+        <!-- md-data-table -->
+        <link href="/bower_components/angular-material-data-table/dist/md-data-table.min.css" rel="stylesheet" type="text/css"/>
+        <script type="text/javascript" src="/bower_components/angular-material-data-table/dist/md-data-table.min.js"></script>
+
         <!-- module -->
-        <!-- <script src="/js/app.module.js"></script> -->
+        <script src="app.module.js"></script>
 
         <!-- controllers -->
-        <!-- <script src="/js/controllers/info.controller.js"></script> -->
+        <script src="info/info.controller.js"></script>
     </body>
 </html>
