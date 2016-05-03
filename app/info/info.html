@@ -1,28 +1,26 @@
-<md-toolbar class="md-table-toolbar md-default">
-  <div class="md-toolbar-tools">
-    <span>Containers</span>
-  </div>
+<md-toolbar layout-align="center center">
+  STAGING
 </md-toolbar>
-
-<md-table-container>
-  <table md-table>
-    <thead md-head>
-      <tr md-row>
-        <th md-column>Name</th>
-        <th md-column>Version</th>
-        <th md-column>Port</th>
-        <th md-column>State</th>
-        <th md-column>Status</th>
-      </tr>
-    </thead>
-    <tbody md-body>
-      <tr md-row ng-repeat="container in vm.containers">
-        <td md-cell>{{container.name}}</td>
-        <td md-cell>{{container.version}}</td>
-        <td md-cell>{{container.port}}</td>
-        <td md-cell>{{container.state}}</td>
-        <td md-cell>{{container.status}}</td>
-      </tr>
-    </tbody>
-  </table>
-</md-table-container>
+<md-content class='md-padding' layout-xs="column" layout="row" layout-wrap layout-align="center center" flex>
+  <md-card ng-repeat="container in vm.containers" ng-class="container.color" flex=30 flex-xs=100>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">{{container.name}}:{{container.version}}</span>
+        <span class="md-subhead">{{container.state}}</span>
+      </md-card-title-text>
+      <div layout-align="end center">
+        <md-icon md-font-set="material-icons"> {{container.icon}} </md-icon>
+      </div>
+    </md-card-title>
+    <md-card-content layout="row" layout-align="space-between center">
+      <div>
+        <md-icon md-font-set="material-icons"> query_builder </md-icon>
+        <span am-time-ago="container.created * 1000"></span>
+      </div>
+      <div>
+        <md-icon md-font-set="material-icons"> done </md-icon>
+        <span>{{container.status}}</span>
+      </div>
+    </md-card-content>
+  </md-card>
+</md-content>

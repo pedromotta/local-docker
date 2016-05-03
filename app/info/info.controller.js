@@ -2,8 +2,8 @@
   'use strict';
 
   angular
-    .module('localDockerApp')
-    .controller('InfoController', InfoController);
+  .module('localDockerApp')
+  .controller('InfoController', InfoController);
 
   InfoController.$inject = ['$http'];
 
@@ -11,8 +11,8 @@
     var vm = this;
     vm.containers = [];
     $http
-      .get('/api/info')
-      .then(infoResult, infoErrorResult);
+    .get('/api/info')
+    .then(infoResult, infoErrorResult);
 
     function infoResult(result) {
       if (result.data && result.data.length > 0) {
@@ -59,13 +59,66 @@
       return version;
     }
 
+    function getColor(data) {
+      var state = data.State;
+
+      if (!state) {
+        if (data.Status.indexOf('Up') === 0) {
+          state = 'running';
+        } else if (data.Status.toLowerCase().indexOf('restarting') > -1) {
+          state = 'restarting';
+        } else if (data.Status.toLowerCase().indexOf('created') > -1) {
+          state = 'created';
+        } else if (data.Status.toLowerCase().indexOf('paused') > -1) {
+          state = 'paused';
+        } else if (data.Status.toLowerCase().indexOf('exited') > -1) {
+          state = 'exited';
+        }
+      }
+
+      switch(state) {
+        case 'created':
+        return 'blue';
+        case 'restarting':
+        return 'orange';
+        case 'running':
+        return 'green';
+        case 'paused':
+        return 'grey';
+        case 'exited':
+        return 'red';
+        default:
+        return '';
+      }
+    }
+
+    function getIcon(data) {
+      switch(data.State) {
+        case 'created':
+        return 'sentiment_satisfied';
+        case 'restarting':
+        return 'sentiment_dissatisfied';
+        case 'running':
+        return 'sentiment_very_satisfied';
+        case 'paused':
+        return 'sentiment_neutral';
+        case 'exited':
+        return 'sentiment_very_dissatisfied';
+        default:
+        return '';
+      }
+    }
+
     function buildContainerObj(data) {
       return {
         name: getName(data),
+        created: data.Created || '',
         state: data.State || '',
         status: data.Status || '',
         port: getPort(data),
-        version: getVersion(data)
+        version: getVersion(data),
+        color: getColor(data),
+        icon: getIcon(data)
       };
     }
 
