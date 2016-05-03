@@ -21,7 +21,9 @@
 
     function theme($mdThemingProvider) {
   $mdThemingProvider.theme('default')
-    .primaryPalette('blue-grey')
+    .primaryPalette('grey',{
+      'default': '900',
+    })
     .accentPalette('teal')
     .warnPalette('red');
 }

@@ -1,37 +1,39 @@
 .green {
-  color: white;
   background-color: green;
 }
 
 .blue {
-  color: white;
   background-color: blue;
 }
 
 .yellow {
-  color: white;
   background-color: yellow;
 }
 
 .red {
-  color: white;
   background-color: red;
 }
 
 .grey {
-  color: white;
   background-color: grey;
 }
 
 .orange {
-  color: white;
   background-color: orange;
 }
 
-.md-subhead {
+.color-white {
   color: white !important;
 }
 
 .material-icons {
   color: white !important;
+}
+
+.p-t-12 {
+  padding-top:12px;
+}
+
+.p-l-12 {
+  padding-left: 12px;
 }
