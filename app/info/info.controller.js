@@ -108,10 +108,9 @@
         return '';
       }
     }
-
     function buildContainerObj(data) {
       return {
-        name: getName(data),
+        name: getName(data) + ':' + getVersion(data),
         created: data.Created || '',
         state: data.State || '',
         status: data.Status || '',

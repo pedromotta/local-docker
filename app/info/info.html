@@ -1,12 +1,15 @@
 <md-toolbar layout-align="center center">
   STAGING
 </md-toolbar>
-<md-content class='md-padding' layout-xs="column" layout="row" layout-wrap layout-align="center center" flex>
-  <md-card ng-repeat="container in vm.containers" ng-class="container.color" flex=30 flex-xs=100>
+<md-content class='md-padding color-white' layout-xs="column" layout="row" layout-wrap layout-align="center center" flex>
+  <md-card ng-repeat="container in vm.containers" ng-class="container.color" flex=33 flex-xs=100>
     <md-card-title>
       <md-card-title-text>
-        <span class="md-headline">{{container.name}}:{{container.version}}</span>
-        <span class="md-subhead">{{container.state}}</span>
+        <div class="md-headline">
+          {{container.name | limitTo:20}}
+          <span ng-if="container.name.length > 20">...</span>
+        </div>
+        <span class="md-subhead color-white">{{container.state}}</span>
       </md-card-title-text>
       <div layout-align="end center">
         <md-icon md-font-set="material-icons"> {{container.icon}} </md-icon>
@@ -18,7 +21,7 @@
         <span am-time-ago="container.created * 1000"></span>
       </div>
       <div>
-        <md-icon md-font-set="material-icons"> done </md-icon>
+        <md-icon md-font-set="material-icons"> comment </md-icon>
         <span>{{container.status}}</span>
       </div>
     </md-card-content>
