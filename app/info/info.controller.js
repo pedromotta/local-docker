@@ -27,10 +27,8 @@
       vm.containers = [];
       if (result.data && result.data.length > 0) {
         result.data.forEach(function (item) {
-          for(var i =0; i<9; i++){
           var container = buildContainerObj(item);
           vm.containers.push(container);
-        }
         });
       }
     }
