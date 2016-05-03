@@ -59,13 +59,50 @@
       return version;
     }
 
+    function getColor(data) {
+      switch(data.State) {
+        case 'created':
+          return 'blue';
+        case 'restarting':
+          return 'red';
+        case 'running':
+          return 'green';
+        case 'paused':
+          return 'yellow';
+        case 'exited':
+          return 'red';
+        default:
+          return '';
+      }
+    }
+
+    function getIcon(data) {
+      switch(data.State) {
+        case 'created':
+          return 'sentiment_satisfied';
+        case 'restarting':
+          return 'sentiment_dissatisfied';
+        case 'running':
+          return 'sentiment_very_satisfied';
+        case 'paused':
+          return 'sentiment_neutral';
+        case 'exited':
+          return 'sentiment_very_dissatisfied';
+        default:
+          return '';
+      }
+    }
+
     function buildContainerObj(data) {
       return {
         name: getName(data),
+        created: data.Created || '',
         state: data.State || '',
         status: data.Status || '',
         port: getPort(data),
-        version: getVersion(data)
+        version: getVersion(data),
+        color: getColor(data),
+        icon: getIcon(data)
       };
     }
 

@@ -4,25 +4,29 @@
         <title>Dockers</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Angular Material style sheet -->
-        <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
+        <link rel="stylesheet" href="/bower_components/angular-material/angular-material.min.css">
+        <!-- Project style sheet -->
+        <link rel="stylesheet" href="/content/css/style.css">
+        <!-- Material Icons -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
     <body ng-app="localDockerApp">
         <div>
             <ng-view></ng-view>
         </div>
         <!-- Angular Material requires Angular.js Libraries -->
-        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-route.min.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+        <script src="/bower_components/angular/angular.min.js"></script>
+        <script src="/bower_components/angular-route/angular-route.min.js"></script>
+        <script src="/bower_components/angular-animate/angular-animate.min.js"></script>
+        <script src="/bower_components/angular-aria/angular-aria.min.js"></script>
+        <script src="/bower_components/angular-messages/angular-messages.min.js"></script>
 
         <!-- Angular Material Library -->
-        <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
+        <script src="/bower_components/angular-material/angular-material.min.js"></script>
 
-        <!-- md-data-table -->
-        <link href="/bower_components/angular-material-data-table/dist/md-data-table.min.css" rel="stylesheet" type="text/css"/>
-        <script type="text/javascript" src="/bower_components/angular-material-data-table/dist/md-data-table.min.js"></script>
+        <!-- Angular Moment Library -->
+        <script src="/bower_components/moment/min/moment.min.js"></script>
+        <script src="/bower_components/angular-moment/angular-moment.min.js"></script>
 
         <!-- module -->
         <script src="app.module.js"></script>
