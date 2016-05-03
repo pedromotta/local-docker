@@ -5,20 +5,32 @@
   .module('localDockerApp')
   .controller('InfoController', InfoController);
 
-  InfoController.$inject = ['$http'];
+  InfoController.$inject = ['$http', '$interval'];
 
-  function InfoController($http) {
+  function InfoController($http, $interval) {
     var vm = this;
+    var interval = 60000;
     vm.containers = [];
-    $http
-    .get('/api/info')
-    .then(infoResult, infoErrorResult);
+
+    function getInfo(){
+      $http
+      .get('/api/info')
+      .then(infoResult, infoErrorResult);
+    }
+
+    getInfo();
+    $interval(function() {
+      getInfo();
+    }, interval);
 
     function infoResult(result) {
+      vm.containers = [];
       if (result.data && result.data.length > 0) {
         result.data.forEach(function (item) {
+          for(var i =0; i<9; i++){
           var container = buildContainerObj(item);
           vm.containers.push(container);
+        }
         });
       }
     }
@@ -108,10 +120,9 @@
         return '';
       }
     }
-
     function buildContainerObj(data) {
       return {
-        name: getName(data),
+        name: getName(data) + ':' + getVersion(data),
         created: data.Created || '',
         state: data.State || '',
         status: data.Status || '',
