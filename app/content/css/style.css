@@ -29,3 +29,11 @@
 .material-icons {
   color: white !important;
 }
+
+.p-t-12 {
+  padding-top:12px;
+}
+
+.p-l-12 {
+  padding-left: 12px;
+}
