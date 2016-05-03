@@ -2,8 +2,8 @@
   'use strict';
 
   angular
-    .module('localDockerApp')
-    .controller('InfoController', InfoController);
+  .module('localDockerApp')
+  .controller('InfoController', InfoController);
 
   InfoController.$inject = ['$http'];
 
@@ -11,8 +11,8 @@
     var vm = this;
     vm.containers = [];
     $http
-      .get('/api/info')
-      .then(infoResult, infoErrorResult);
+    .get('/api/info')
+    .then(infoResult, infoErrorResult);
 
     function infoResult(result) {
       if (result.data && result.data.length > 0) {
@@ -60,36 +60,52 @@
     }
 
     function getColor(data) {
-      switch(data.State) {
+      var state = data.State;
+
+      if (!state) {
+        if (data.Status.indexOf('Up') === 0) {
+          state = 'running';
+        } else if (data.Status.toLowerCase().indexOf('restarting') > -1) {
+          state = 'restarting';
+        } else if (data.Status.toLowerCase().indexOf('created') > -1) {
+          state = 'created';
+        } else if (data.Status.toLowerCase().indexOf('paused') > -1) {
+          state = 'paused';
+        } else if (data.Status.toLowerCase().indexOf('exited') > -1) {
+          state = 'exited';
+        }
+      }
+
+      switch(state) {
         case 'created':
-          return 'blue';
+        return 'blue';
         case 'restarting':
-          return 'red';
+        return 'orange';
         case 'running':
-          return 'green';
+        return 'green';
         case 'paused':
-          return 'yellow';
+        return 'grey';
         case 'exited':
-          return 'red';
+        return 'red';
         default:
-          return '';
+        return '';
       }
     }
 
     function getIcon(data) {
       switch(data.State) {
         case 'created':
-          return 'sentiment_satisfied';
+        return 'sentiment_satisfied';
         case 'restarting':
-          return 'sentiment_dissatisfied';
+        return 'sentiment_dissatisfied';
         case 'running':
-          return 'sentiment_very_satisfied';
+        return 'sentiment_very_satisfied';
         case 'paused':
-          return 'sentiment_neutral';
+        return 'sentiment_neutral';
         case 'exited':
-          return 'sentiment_very_dissatisfied';
+        return 'sentiment_very_dissatisfied';
         default:
-          return '';
+        return '';
       }
     }
 

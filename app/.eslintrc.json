@@ -1,6 +1,0 @@
-{
-    "extends": "angular",
-    "rules": {
-      "wrap-iife": ["error", "any"]
-    }
-}

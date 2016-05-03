@@ -18,6 +18,16 @@
   background-color: red;
 }
 
+.grey {
+  color: white;
+  background-color: grey;
+}
+
+.orange {
+  color: white;
+  background-color: orange;
+}
+
 .md-subhead {
   color: white !important;
 }
