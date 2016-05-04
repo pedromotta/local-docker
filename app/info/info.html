@@ -12,32 +12,29 @@
 </md-toolbar>
 <md-content class="md-padding color-white" layout="row" layout-wrap layout-align="center center">
     <md-card ng-repeat="container in vm.containers | orderBy:name | limitTo:vm.limit:vm.itIndex" ng-class="container.color" flex=30 flex-xs=100>
-        <md-card-title>
-            <md-card-title-text>
-                <div class="md-headline">
-                    <span data-fittext data-fittext-max="inherit">{{container.name}}</span>
-                </div>
-                <div class="md-subhead color-white">
-                    <span data-fittext data-fittext-max="inherit">{{container.state}}</span>
-                </div>
-            </md-card-title-text>
-            <div class="md-headline" layout-align="end center" flex=15>
-                <span data-fittext data-fittext-max="inherit">{{container.version}}</span>
-            </div>
-        </md-card-title>
-        <md-card-content layout="column">
-            <div layout="row">
-                <md-icon md-font-set="material-icons" flex=10> query_builder </md-icon>
-                <span data-fittext data-fittext-max="inherit">Created</span>
-                <span data-fittext data-fittext-max="inherit" am-time-ago="container.created * 1000" class="p-l-6" flex=90></span>
-            </div>
-            <div layout="row" class="p-t-12">
-                <md-icon md-font-set="material-icons" flex=10> comment </md-icon>
-                <div flex=80>
-                    <span data-fittext data-fittext-max="inherit">{{container.status}}</span>
-                </div>
-                <md-icon md-font-set="material-icons" flex=10> {{container.icon}} </md-icon>
-            </div>
-        </md-card-content>
+      <md-card-title>
+        <md-card-title-text>
+          <div class="md-headline">
+            <span data-fittext data-fittext-max="inherit">{{container.name}}</span>
+          </div>
+          <div class="md-headline color-white">
+            <span data-fittext data-fittext-max="inherit">{{container.version}}</span>
+          </div>
+        </md-card-title-text>
+      </md-card-title>
+      <md-card-content layout="column">
+        <div layout="row">
+          <md-icon md-font-set="material-icons" flex=10> query_builder </md-icon>
+          <span>Created</span>
+          <span data-fittext data-fittext-min="inherit" am-time-ago="container.created * 1000" class="p-l-6" flex=90></span>
+        </div>
+        <div layout="row" class="p-t-12">
+          <md-icon md-font-set="material-icons" flex=10> comment </md-icon>
+          <div flex=80>
+            <span data-fittext data-fittext-max="inherit">{{container.status}}</span>
+          </div>
+          <md-icon md-font-set="material-icons" flex=10> {{container.icon}} </md-icon>
+        </div>
+      </md-card-content>
     </md-card>
 </md-content>

@@ -86,23 +86,8 @@
     }
 
     function getColor(data) {
-      var state = data.State;
 
-      if (!state) {
-        if (data.Status.indexOf('Up') === 0) {
-          state = 'running';
-        } else if (data.Status.toLowerCase().indexOf('restarting') > -1) {
-          state = 'restarting';
-        } else if (data.Status.toLowerCase().indexOf('created') > -1) {
-          state = 'created';
-        } else if (data.Status.toLowerCase().indexOf('paused') > -1) {
-          state = 'paused';
-        } else if (data.Status.toLowerCase().indexOf('exited') > -1) {
-          state = 'exited';
-        }
-      }
-
-      switch(state) {
+      switch(data.State) {
         case 'created':
         return 'blue';
         case 'restarting':
@@ -134,7 +119,25 @@
         return '';
       }
     }
+
+    function convertState(data){
+      if (!data.State) {
+        if (data.Status.indexOf('Up') === 0) {
+          data.State = 'running';
+        } else if (data.Status.toLowerCase().indexOf('restarting') > -1) {
+          data.State = 'restarting';
+        } else if (data.Status.toLowerCase().indexOf('created') > -1) {
+          data.State = 'created';
+        } else if (data.Status.toLowerCase().indexOf('paused') > -1) {
+          data.State = 'paused';
+        } else if (data.Status.toLowerCase().indexOf('exited') > -1) {
+          data.State = 'exited';
+        }
+      }
+    }
+
     function buildContainerObj(data) {
+      convertState(data);
       return {
         name: getName(data),
         created: data.Created || '',

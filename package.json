@@ -1,6 +1,6 @@
 {
   "name": "local-docker",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "API for deploy applications in docker containers",
   "main": "index.js",
   "dependencies": {
@@ -18,7 +18,7 @@
   "scripts": {
     "start": "node index",
     "lint": "eslint ./*.js lib/** test/**",
-    "build": "docker build -t pedromottamt/bonuz-docker:1.0.5 ."
+    "build": "docker build -t pedromottamt/bonuz-docker:1.0.6 ."
   },
   "repository": {
     "type": "git",
