@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('localDockerApp', ['ngRoute', 'ngMaterial', 'angularMoment'])
+    .module('localDockerApp', ['ngRoute', 'ngMaterial', 'angularMoment','ngFitText'])
     .config(routes)
     .config(theme)
     .run();

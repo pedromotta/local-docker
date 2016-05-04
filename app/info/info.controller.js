@@ -27,11 +27,20 @@
       vm.containers = [];
       if (result.data && result.data.length > 0) {
         result.data.forEach(function (item) {
-          for(var i =0; i<9; i++){
           var container = buildContainerObj(item);
           vm.containers.push(container);
-        }
         });
+        vm.containers.sort(compare);
+      }
+    }
+
+    function compare(a,b) {
+      if (a.name < b.name) {
+        return -1;
+      } else if (a.name > b.name) {
+        return 1;
+      } else {
+        return 0;
       }
     }
 
@@ -122,7 +131,7 @@
     }
     function buildContainerObj(data) {
       return {
-        name: getName(data) + ':' + getVersion(data),
+        name: getName(data),
         created: data.Created || '',
         state: data.State || '',
         status: data.Status || '',
