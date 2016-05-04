@@ -3,7 +3,7 @@
   <span>STAGING</span>
 </md-toolbar>
 <md-content class="md-padding color-white" layout="row" layout-wrap layout-align="center center">
-  <md-card ng-repeat="container in vm.containers | orderBy:container.name" ng-class="container.color" flex=30 flex-xs=100>
+  <md-card ng-repeat="container in vm.containers | orderBy:name | limitTo:9:vm.itIndex" ng-class="container.color" flex=30 flex-xs=100>
     <md-card-title>
       <md-card-title-text>
         <div class="md-headline">
