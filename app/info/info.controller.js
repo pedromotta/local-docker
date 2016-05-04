@@ -9,8 +9,11 @@
 
   function InfoController($http, $interval) {
     var vm = this;
-    var interval = 60000;
+    var intervalInfo = 60000;
+    var intervalIterator = 10000;
     vm.containers = [];
+    var iterator;
+    vm.itIndex = 0;
 
     function getInfo(){
       $http
@@ -21,7 +24,18 @@
     getInfo();
     $interval(function() {
       getInfo();
-    }, interval);
+    }, intervalInfo);
+
+    $interval(function() {
+      nextIndex();
+    }, intervalIterator);
+
+    function nextIndex(){
+      var nextIndex =  vm.itIndex + 9;
+      nextIndex < vm.containers.length ?
+      vm.itIndex = nextIndex:
+      vm.itIndex = 0;
+    }
 
     function infoResult(result) {
       vm.containers = [];
@@ -30,6 +44,7 @@
           var container = buildContainerObj(item);
           vm.containers.push(container);
         });
+        iterator = iterator();
       }
     }
 
