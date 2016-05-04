@@ -1,34 +1,34 @@
-<md-toolbar layout-align="center center">
-  STAGING
+<md-toolbar layout="row" layout-align="space-around center">
+  <span><ng-include class="md-toolbar-tools" src="'content/images/img_logo_bonuz_header.svg'"/></span>
+  <span>STAGING</span>
 </md-toolbar>
-<md-content class='md-padding color-white' layout-xs="column" layout="row" layout-wrap layout-align="center center" flex>
-  <md-card ng-repeat="container in vm.containers" ng-class="container.color" flex=30 flex-xs=100>
+<md-content class="md-padding color-white" layout="row" layout-wrap layout-align="center center">
+  <md-card ng-repeat="container in vm.containers | orderBy:container.name" ng-class="container.color" flex=30 flex-xs=100>
     <md-card-title>
       <md-card-title-text>
         <div class="md-headline">
-          {{container.name | limitTo:20}}
-          <span ng-if="container.name.length > 20">...</span>
+          <span data-fittext data-fittext-max="inherit">{{container.name}}</span>
         </div>
         <div class="md-subhead color-white">
-          {{container.state | limitTo:35}}
-          <span ng-if="container.state.length > 35">...</span>
+          <span data-fittext data-fittext-max="inherit">{{container.state}}</span>
         </div>
       </md-card-title-text>
-      <div layout-align="end center">
-        <md-icon md-font-set="material-icons"> {{container.icon}} </md-icon>
+      <div class="md-headline" layout-align="end center" flex=15>
+        <span data-fittext data-fittext-max="inherit">{{container.version}}</span>
       </div>
     </md-card-title>
-    <md-card-content layout="column" layout-align="space-between start">
-      <div layout>
-        <md-icon md-font-set="material-icons"> query_builder </md-icon>
-        <span class="p-l-12" am-time-ago="container.created * 1000"></span>
+    <md-card-content layout="column">
+      <div layout="row">
+        <md-icon md-font-set="material-icons" flex=10> query_builder </md-icon>
+        <span data-fittext data-fittext-max="inherit">Created</span>
+        <span data-fittext data-fittext-max="inherit" am-time-ago="container.created * 1000" class="p-l-6" flex=90></span>
       </div>
-      <div class="p-t-12" layout>
-        <md-icon md-font-set="material-icons"> comment </md-icon>
-        <div class="p-l-12">
-          {{container.status | limitTo:30}}
-          <span ng-if="container.status.length > 30">...</span>
+      <div layout="row" class="p-t-12">
+        <md-icon md-font-set="material-icons" flex=10> comment </md-icon>
+        <div flex=80>
+          <span data-fittext data-fittext-max="inherit">{{container.status}}</span>
         </div>
+        <md-icon md-font-set="material-icons" flex=10> {{container.icon}} </md-icon>
       </div>
     </md-card-content>
   </md-card>

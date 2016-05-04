@@ -20,6 +20,7 @@
     "angular-aria": "1.5.5",
     "angular-messages": "1.5.5",
     "angular-material": "1.0.8",
-    "angular-moment" : "1.0.0-beta.6"
+    "angular-moment": "1.0.0-beta.6",
+    "ngFitText": "~4.2.0"
   }
 }

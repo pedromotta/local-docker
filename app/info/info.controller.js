@@ -120,7 +120,7 @@
     }
     function buildContainerObj(data) {
       return {
-        name: getName(data) + ':' + getVersion(data),
+        name: getName(data),
         created: data.Created || '',
         state: data.State || '',
         status: data.Status || '',
