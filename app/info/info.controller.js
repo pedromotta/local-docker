@@ -14,6 +14,7 @@
     vm.containers = [];
     var iterator;
     vm.itIndex = 0;
+    vm.limit = 9;
 
     function getInfo(){
       $http
@@ -31,7 +32,7 @@
     }, intervalIterator);
 
     function nextIndex(){
-      var nextIndex =  vm.itIndex + 9;
+      var nextIndex =  vm.itIndex + vm.limit;
       nextIndex < vm.containers.length ?
       vm.itIndex = nextIndex:
       vm.itIndex = 0;
