@@ -1,1 +1,3 @@
-# local-docker [![Circle CI](https://circleci.com/gh/pedromotta/local-docker/tree/master.svg?style=shield)](https://circleci.com/gh/pedromotta/local-docker/tree/master)
+# local-docker
+
+Monitoramento dos containers existentes no servidor e deploy.
