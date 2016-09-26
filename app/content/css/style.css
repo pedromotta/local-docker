@@ -7,7 +7,7 @@
 }
 
 .yellow {
-  background-color: yellow;
+  background-color: rgb(246,94,1);
 }
 
 .red {
@@ -31,9 +31,17 @@
 }
 
 .p-t-12 {
-  padding-top:12px;
+  padding-top:4px;
+  font-size: 20px;
+  opacity: 0.8;
 }
 
 .p-l-6 {
   padding-left: 6px;
 }
+
+md-card md-card-title {
+    padding: 16px 16px 8px;
+}
+
+html { overflow-y: hidden; }
