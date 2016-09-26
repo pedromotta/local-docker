@@ -96,8 +96,8 @@
     function getColor(data) {
       var colors = {
         created: 'blue',
-        warning: 'yellow',
-        restarting: 'orange',
+        warning: 'orange',
+        restarting: 'red',
         running: 'green',
         up: 'green',
         paused: 'grey',
