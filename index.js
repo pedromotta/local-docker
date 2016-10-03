@@ -4,8 +4,8 @@ var express = require('express');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var logger = require('./lib/commons/logger');
-
 var pkg = require(ROOT_PATH + '/package.json');
+var service = require('./lib/info/service');
 
 var ApiNode = (function () {
   var server;
@@ -44,9 +44,41 @@ var ApiNode = (function () {
 
   require('./lib/app-routes')(app);
 
+  var loadContainers = function () {
+    service.getInfo(function (err, containers) {
+      if (err) {
+        logger.error('error on get containers info');
+      } else {
+
+        GLOBAL.containers = containers;
+      }
+      //sort('warning', containers);
+    });
+  }
+
+  var sort = function (firstItem, containers) {
+    var newArray = containers;
+    var cont = 0;
+    containers.forEach(function (container) {
+      if (container.State === firstItem) {
+        newArray.splice(cont, 1);
+        newArray.unshift(container);
+      }
+
+      if (cont === containers.length - 1) {
+        GLOBAL.containers = newArray;
+      }
+      cont++;
+    });
+  }
+
   server = app.listen(4444, function () {
     var host = server.address().address;
     var port = server.address().port;
+    loadContainers();
+    setInterval(function () {
+      loadContainers();
+    }, 30000);
 
     server.on('close', function () {
       logger.warn('close');
@@ -56,6 +88,6 @@ var ApiNode = (function () {
   });
 
   return server;
-}());
+} ());
 
 module.exports = ApiNode;

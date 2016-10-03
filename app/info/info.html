@@ -1,7 +1,7 @@
 <md-toolbar>
   <div class="md-toolbar-tools" layout="row" layout-align="space-around center">
     <span><ng-include class="md-toolbar-tools" src="'content/images/img_logo_bonuz_header.svg'"/></span>
-    <span>STAGING</span>
+    <span>Docker monitor - {{vm.getInstanceName()}}</span>
     <md-select ng-model="vm.limit">
       <md-option value="9">9</md-option>
       <md-option value="12">12</md-option>
@@ -11,22 +11,19 @@
   </div>
 </md-toolbar>
 <md-content class="md-padding color-white" layout="row" layout-wrap layout-align="center center">
-    <md-card ng-repeat="container in vm.containers | orderBy:'name' | limitTo:vm.limit:vm.itIndex" ng-class="container.color" flex=30 flex-xs=100>
+    <md-card ng-repeat="container in vm.containers | orderBy:'priority' | limitTo:vm.limit:vm.itIndex" ng-class="container.color" flex=30 flex-xs=100>
       <md-card-title>
         <md-card-title-text>
           <div class="md-headline">
             <span data-fittext data-fittext-max="inherit">{{container.name}}</span>
           </div>
-          <div class="md-headline color-white">
-            <span data-fittext data-fittext-max="inherit">{{container.version}}</span>
-          </div>
         </md-card-title-text>
       </md-card-title>
       <md-card-content layout="column">
-        <div layout="row">
+        <div layout="row" class="p-t-12">
           <md-icon md-font-set="material-icons" flex=10> query_builder </md-icon>
-          <span>Created</span>
-          <span data-fittext data-fittext-min="inherit" am-time-ago="container.created * 1000" class="p-l-6" flex=90></span>
+          <span flex=20>Created</span>
+          <span data-fittext data-fittext-min="inherit" am-time-ago="container.created * 1000" class="p-l-6" flex=70></span>
         </div>
         <div layout="row" class="p-t-12">
           <md-icon md-font-set="material-icons" flex=10> comment </md-icon>
